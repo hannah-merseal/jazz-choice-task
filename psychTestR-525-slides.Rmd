@@ -1,0 +1,121 @@
+---
+title: "Presenting Audio Stimuli With psychTestR"
+author: "Hannah Merseal"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(psychTestR)
+library(shiny)
+```
+
+## Getting Started
+
+psychTestR is a new package for creating behavioral experiment interfaces using Shiny. All documentation is available at <https://pmcharrison.github.io/psychTestR/>.
+
+Features:
+
+- Integrates data collection and analysis in R
+- Allows for a clean workflow
+- Modular testing approach (easy to read!)
+- Can be deployed locally or online (important in 2020)
+- Open source for open science!
+
+## Installing psychTestR
+
+- A little tricky, will need to update several packages & restart R session several times...
+- After that, open RStudio and install with devtools:
+
+```{r install, include=TRUE, eval=FALSE}
+install.packages("devtools")
+devtools::install_github("pmcharrison/psychTestR")
+```
+
+- After a little brute force, you'll be ready to go!
+
+## A simple demo
+
+```{r demo, echo = FALSE}
+
+make_test(list(
+  text_input_page(
+    label = "name", 
+    prompt = "What's your name?", 
+    validate = function(answer, ...) {
+      if (answer == "")
+        "Name cannot be left blank."
+      else TRUE
+    },
+    on_complete = function(answer, state, ...) {
+      set_global(key = "name", value = answer,
+                 state = state)
+    }),
+  NAFC_page(
+    label = "colour",
+    prompt = "What's your favourite colour?",
+    choices = c("Red", "Green", "Blue")),
+  elt_save_results_to_disk(complete = TRUE),
+  reactive_page(function(state, ...) {
+    final_page(paste0("Thank you for participating, ", 
+                      get_global("name", state),
+                      "."))
+  })))
+
+```
+
+## Basic units of a test
+### Pages
+* Data collection is performed via **pages** (similar to PsychoPy)
+* Base function is `page`(can be customized)
+* There are also many helper functions for creating different page types!
+     + `one_button_page` (Welcome, instructions, etc.)
+     + `NAFC_page` (n-alternative forced choice)
+     + `text_input_page` (text input)
+     + `audio_NAFC_page` (forced choice page with audio prompt)
+     + `dropdown_page` (response selected from dropdown list)
+     + `slider_page` (response from slider)
+     + `final_page` (page that concludes the test)
+* The simple demo above uses a **Text Input Page** and a **NAFC Page**:
+
+```{r demo2, echo = TRUE, eval=FALSE}
+
+make_test(list(
+  text_input_page(
+    label = "name", 
+    prompt = "What's your name?", 
+    validate = function(answer, ...) {
+      if (answer == "")
+        "Name cannot be left blank."
+      else TRUE
+    },
+    on_complete = function(answer, state, ...) {
+      set_global(key = "name", value = answer,
+                 state = state)
+    }),
+  NAFC_page(
+    label = "colour",
+    prompt = "What's your favourite colour?",
+    choices = c("Red", "Green", "Blue")),
+  elt_save_results_to_disk(complete = TRUE),
+  reactive_page(function(state, ...) {
+    final_page(paste0("Thank you for participating, ", 
+                      get_global("name", state),
+                      "."))
+  })))
+
+```
+
+### Timelines
+* You can create a test using a collection of pages gathered into a `timeline`.
+* This makes it easier to create a test with reactive pages and custom code, but you can just use the pre-made pages. 
+
+### Making the test
+
+
+
