@@ -157,7 +157,7 @@ Make sure you open it in browser for the music questions!
 ## Conclusions
 * psychTestR is very well-set up for basic experiments, and more complex designs can be customized with a little time and effort.
 * Website has good initial documentation, demos
-*[Already starting to be used in music research](https://pmcharrison.github.io/psychTestR/articles/a2-research-examples.html)
+    +[Already starting to be used in music research](https://pmcharrison.github.io/psychTestR/articles/a2-research-examples.html)
 * Can (sort of) be deployed online (welcome to 2020)
     + NOT optimized for RT data; [may want to use PsychoPy instead](https://www.frontiersin.org/articles/10.3389/fpsyg.2019.02883/full)
     + Issues page says they are working on some kinks in persistent file storage w/ shiny.io, adding Dropbox compatibility?
