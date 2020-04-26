@@ -41,7 +41,7 @@ training <- join(
 #If "no" instruments, skip through the next 2 blocks (n = number of questions)
 branch <- code_block(function(state, ...) {
   if (answer(state) == "No") {
-    skip_n_pages(state, 16)
+    skip_n_pages(state, 15)
   }
 })
 
@@ -70,7 +70,7 @@ Please rate on a scale of 1-7, with 1 being 'not proficient' and 7 being 'extrem
   elt_save_results_to_disk(complete = TRUE)
 )
 
-# Practice questions go here
+# Practice questions
 practice <- join(
   text_input_page("play.11",
                   "Approximately how many hours a week did you spend playing music before the age of 11?
@@ -101,7 +101,11 @@ practice <- join(
                   "Approximately how many hours a week do you currently spend improvising?",
                   one_line = TRUE, save_answer = TRUE)
 )
-
+# instructions
+instructions <- join(
+  one_button_page("Next, you'll be asked to choose between two musical clips. Please listen to the clips in the order they are presented. Additionally,
+                  please choose a clip based on personal preference and not based on any prior experiences you may have had with this genre. When you are ready, please hit 'Next' to begin.")
+)
 #randomized presentation of WJD stims:
 #generate trials
 
@@ -169,6 +173,7 @@ jazz.choice <- make_test(join(
   branch,
   instruments,
   practice,
+  instructions,
   save_stims,
   audio,
   compute_time_taken,
