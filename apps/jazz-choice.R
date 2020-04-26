@@ -35,7 +35,7 @@ training <- join(
   NAFC_page("instrumentYN",
             "Do you play any instruments?",
             c("Yes", "No"), save_answer = TRUE, on_complete = NULL),
-  elt_save_results_to_disk(complete = TRUE)
+  elt_save_results_to_disk(complete = FALSE)
   )
 
 #If "no" instruments, skip through the next 2 blocks (n = number of questions)
@@ -67,7 +67,7 @@ Please rate on a scale of 1-7, with 1 being 'not proficient' and 7 being 'extrem
               "What is your proficiency at improvising? 
 Please rate on a scale of 1-7, with 1 being 'not proficient' and 7 being 'extremely proficient'.",
               1, 7, 1, save_answer = TRUE),
-  elt_save_results_to_disk(complete = TRUE)
+  elt_save_results_to_disk(complete = FALSE)
 )
 
 # Practice questions
@@ -99,7 +99,8 @@ practice <- join(
                   one_line = TRUE, save_answer = TRUE),
   text_input_page("improv.now",
                   "Approximately how many hours a week do you currently spend improvising?",
-                  one_line = TRUE, save_answer = TRUE)
+                  one_line = TRUE, save_answer = TRUE),
+  elt_save_results_to_disk(complete = FALSE)
 )
 # instructions
 instructions <- join(
@@ -157,7 +158,7 @@ for(i in 1:150) {
               save_answer = TRUE)
   )
 }
-audio <- join(audio,elt_save_results_to_disk(complete = TRUE))
+audio <- join(audio,elt_save_results_to_disk(complete = FALSE))
 
 
 compute_time_taken <- code_block(function(state, ...) {

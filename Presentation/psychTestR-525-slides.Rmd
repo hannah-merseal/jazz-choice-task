@@ -21,23 +21,23 @@ psychTestR is a new package for creating behavioral experiment interfaces using 
 
 Features:
 
-- Integrates data collection and analysis in R
-- Allows for a clean workflow
-- Modular testing approach (easy to read!)
-- Can be deployed locally or online (important in 2020)
-- Open source for open science!
+* Integrates data collection and analysis in R
+* Allows for a clean workflow
+* Modular testing approach (easy to read!)
+* Can be deployed locally or online (important in 2020)
+* Open source for open science!
 
 ## Installing psychTestR
 
-- A little tricky, will need to update several packages & restart R session several times...
-- After that, open RStudio and install with devtools:
+* A little tricky, will need to update several packages & restart R session several times...
+* After that, open RStudio and install with devtools:
 
 ```{r install, include=TRUE, eval=FALSE}
 install.packages("devtools")
 devtools::install_github("pmcharrison/psychTestR")
 ```
 
-- After a little brute force, you'll be ready to go!
+* After a little brute force, you'll be ready to go!
 
 ## A simple demo
 
@@ -127,11 +127,29 @@ make_test(list(
 ### Why remake this in R?
 * I originally created this task in Qualtrics, but faced some problems with that format:
     + Qualtrics isn't optimized for the presentation of audio stimuli
-    + Because of this, participants had to manually click on each clip to play it
     + I had to brute force randomization of the stimuli with JavaScript code elements (messy)
-    + Because of all of the above, I had to add more JavaScript to create and pull information about the stimuli that weren't automatically saved in the Qualtrics metadata
+    + Because of this, I had to add more JavaScript to create and pull information about the stimuli that weren't automatically saved in the Qualtrics metadata
     + This led to a really messy output format!
 * Remaking this in R should 1.) give me more control over how the data is saved and 2.) be more easily integrated into an analysis pipeline!
+
+### The app
+Let's go click around the app! 
+
+apps>jazz-choice.R
+
+Make sure you open it in browser for the music questions!
+
+### What I found
+* Separate chunks for demographic/musical info and the test 
+  + Can use skip logic if participant doesn't play instruments
+  + Used text entry and slider questions for demographics
+* Used custom code to randomize presentation of the audio stimuli
+* At the end, `make_test()` gathers all the chunks into an experiment
+* Participant files are a little odd - future exploring to generate participant IDs that make sense
+* 
+
+## A better workflow
+
 
 
 
