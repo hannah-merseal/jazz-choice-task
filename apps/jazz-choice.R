@@ -114,7 +114,7 @@ trials12 = 0 # how many of this type of trial so far
 trials13 = 0
 trials23 = 0
 stimnums <- c() # matrix of stim numbers
-for(i in 1:150) {
+for(i in 1:10) { #for demo, just do 10 trials, usually 150
   # pick one type at random
   categories <- sample(c("12","13","23"),1)
   # pick new type if done too many of this type already
@@ -149,7 +149,7 @@ save_stims <- code_block(function(state, ...) {
 })
 
 audio <- c()
-for(i in 1:150) {
+for(i in 1:10) { #also usually 150
   audio <- join(audio,
     NAFC_page(label=paste("audio.",i),prompt=(shiny::HTML(paste(
         "<audio controls> <source src=\"https://raw.githubusercontent.com/hannah-merseal/friendly-engine/master/", stimnums[i,1], ".mp3\" type=\"audio/mpeg\"> </audio>",

@@ -13,6 +13,7 @@ runtime: shiny
 knitr::opts_chunk$set(echo = TRUE)
 library(psychTestR)
 library(shiny)
+library(dplyr)
 ```
 
 ## Getting Started
@@ -146,10 +147,19 @@ Make sure you open it in browser for the music questions!
 * Used custom code to randomize presentation of the audio stimuli
 * At the end, `make_test()` gathers all the chunks into an experiment
 * Participant files are a little odd - future exploring to generate participant IDs that make sense
-* 
+* The stimuli are saved as their own matrix for each participant!
 
 ## A better workflow
-
-
-
-
+* Data are saved as .rds objects - use `readRDS` to read participant data in as a list
+    + May take some massaging to get into a clean dataframe - some data appear to be lost if directly saved as a csv from the admin panel
+    + This method is conducive to developing individual participant reports before an aggregate - with populations like musicians, good to see expertise differences at individual level.
+  
+## Conclusions
+* psychTestR is very well-set up for basic experiments, and more complex designs can be customized with a little time and effort.
+* Website has good initial documentation, demos
+*[Already starting to be used in music research](https://pmcharrison.github.io/psychTestR/articles/a2-research-examples.html)
+* Can (sort of) be deployed online (welcome to 2020)
+    + NOT optimized for RT data; [may want to use PsychoPy instead](https://www.frontiersin.org/articles/10.3389/fpsyg.2019.02883/full)
+    + Issues page says they are working on some kinks in persistent file storage w/ shiny.io, adding Dropbox compatibility?
+* Modular design
+* Looking forward to additional features added, workouts of some bugs
