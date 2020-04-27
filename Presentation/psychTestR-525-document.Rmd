@@ -20,7 +20,7 @@ library(dplyr)
 
 psychTestR is a new package for creating behavioral experiment interfaces using Shiny. All documentation is available at <https://pmcharrison.github.io/psychTestR/>.
 
-Features:
+### Features:
 
 * Integrates data collection and analysis in R
 * Allows for a clean workflow
@@ -73,8 +73,10 @@ make_test(list(
 ## Basic units of a test
 ### Pages
 * Data collection is performed via **pages** (similar to PsychoPy)
-* Base function is `page`(can be customized)
-* There are also many helper functions for creating different page types!
+* Base function is `page` (can be customized)
+
+### Built-in page types
+* There are also many pre-built functions for creating different page types!
      + `one_button_page` (Welcome, instructions, etc.)
      + `NAFC_page` (n-alternative forced choice)
      + `text_input_page` (text input)
@@ -82,7 +84,8 @@ make_test(list(
      + `dropdown_page` (response selected from dropdown list)
      + `slider_page` (response from slider)
      + `final_page` (page that concludes the test)
-* The simple demo above uses a **Text Input Page** and a **NAFC Page**:
+     
+The simple demo above uses a **Text Input Page** and a **NAFC Page**:
 
 ```{r demo2, echo = TRUE, eval = FALSE}
 
@@ -114,9 +117,16 @@ make_test(list(
 
 ### Timelines
 * You can create a test using a collection of pages gathered into a `timeline`.
-* This makes it easier to create a test with reactive pages and custom code, but you can just use the pre-made pages. 
+* This makes it easier to create a test with reactive pages and custom code, but you can also just use the pre-made pages. 
+* Customization will be necessary for more complex tasks (later)
 
 ### Making the test
+* Timelines are wrapped using the `make_test()` and `join()` functions
+* You can also save run-time data such as start time, end time
+* `skip_n_pages()` acts as skip logic if a set of questions should only be presented to certain individuals
+    + Oddly, cannot just skip a chunk
+* Validation functionality
+    + Answer should just be digits (age)
 
 ## Jazz Demo
 
@@ -149,17 +159,19 @@ Make sure you open it in browser for the music questions!
 * Participant files are a little odd - future exploring to generate participant IDs that make sense
 * The stimuli are saved as their own matrix for each participant!
 
-## A better workflow
+### A better workflow
 * Data are saved as .rds objects - use `readRDS` to read participant data in as a list
     + May take some massaging to get into a clean dataframe - some data appear to be lost if directly saved as a csv from the admin panel
     + This method is conducive to developing individual participant reports before an aggregate - with populations like musicians, good to see expertise differences at individual level.
   
-## Conclusions
+### Conclusions
 * psychTestR is very well-set up for basic experiments, and more complex designs can be customized with a little time and effort.
 * Website has good initial documentation, demos
-    +[Already starting to be used in music research](https://pmcharrison.github.io/psychTestR/articles/a2-research-examples.html)
+    + [Already starting to be used in music research](https://pmcharrison.github.io/psychTestR/articles/a2-research-examples.html)
 * Can (sort of) be deployed online (welcome to 2020)
     + NOT optimized for RT data; [may want to use PsychoPy instead](https://www.frontiersin.org/articles/10.3389/fpsyg.2019.02883/full)
     + Issues page says they are working on some kinks in persistent file storage w/ shiny.io, adding Dropbox compatibility?
 * Modular design
 * Looking forward to additional features added, workouts of some bugs
+
+# Thank you for reading!
