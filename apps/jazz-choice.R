@@ -41,7 +41,7 @@ training <- join(
 #If "no" instruments, skip through the next 2 blocks (n = number of questions)
 branch <- code_block(function(state, ...) {
   if (answer(state) == "No") {
-    skip_n_pages(state, 15)
+    skip_n_pages(state, 15) 
   }
 })
 
