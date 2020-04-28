@@ -102,11 +102,13 @@ practice <- join(
                   one_line = TRUE, save_answer = TRUE),
   elt_save_results_to_disk(complete = FALSE)
 )
+
 # instructions
 instructions <- join(
   one_button_page("Next, you'll be asked to choose between two musical clips. Please listen to the clips in the order they are presented. Additionally,
                   please choose a clip based on personal preference and not based on any prior experiences you may have had with this genre. When you are ready, please hit 'Next' to begin.")
 )
+
 #randomized presentation of WJD stims:
 #generate trials
 
@@ -154,7 +156,7 @@ for(i in 1:10) { #also usually 150
     NAFC_page(label=paste("audio.",i),prompt=(shiny::HTML(paste(
         "<audio controls> <source src=\"https://raw.githubusercontent.com/hannah-merseal/friendly-engine/master/", stimnums[i,1], ".mp3\" type=\"audio/mpeg\"> </audio>",
         "<audio controls> <source src=\"https://raw.githubusercontent.com/hannah-merseal/friendly-engine/master/", stimnums[i,2], ".mp3\" type=\"audio/mpeg\"> </audio>",sep=""))),
-              choices=c("first clip","second clip"),
+              choices=c("First clip","Second clip"),
               save_answer = TRUE)
   )
 }
