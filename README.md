@@ -1,4 +1,4 @@
-# Hannah,
+ <!-- Hannah,
 # 
 # As I mentioned in class, this is a great project.
 # I'm curious about whether you think this is a better solution than your Qualtrics "hack."
@@ -10,10 +10,10 @@
 # compatible with R 3.6.2.
 # I plan to upgrade once all the end-of-term dust settles.
 # Can you add to your project description what version of R you
-# were using?
+# were using? -->
 
 # jazz-choice-task
-Demo melody choice task using psychTestR, created for PSY 525 Reproducible Research Methods, Spring 2020
+Demo melody choice task using psychTestR (R version 3.6.2), created for PSY 525 Reproducible Research Methods, Spring 2020
 
 ## Getting Started
 
