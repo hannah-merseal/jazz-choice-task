@@ -1,3 +1,17 @@
+# Hannah,
+# 
+# As I mentioned in class, this is a great project.
+# I'm curious about whether you think this is a better solution than your Qualtrics "hack."
+# If I had known about it in time, I would have liked to have you try Penn State's RStudio Connect server.
+# Keep coding!
+# These are skills that will pay dividends many times over, and you clearly have a knack for them.
+#
+# One issue I had in evaluating your code is that is is _not_ 
+# compatible with R 3.6.2.
+# I plan to upgrade once all the end-of-term dust settles.
+# Can you add to your project description what version of R you
+# were using?
+
 # jazz-choice-task
 Demo melody choice task using psychTestR, created for PSY 525 Reproducible Research Methods, Spring 2020
 
